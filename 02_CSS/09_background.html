@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <style>
+    /* background : 그림 자체를 넣는 방법 (이미지를 넣을 때 흔히 사용한다.) */
+
+    /* box 크기와 배경 이미지 크기를 동일하게 맞춤 */
+    .box1 {
+      box-sizing: border-box;
+      width: 192px;
+      height: 128px;
+      background-image: url(../../assets/image/animal10.jpg);   /* image 경로를 잡아주기 위해 url() 함수를 이용 */
+      background-size: 192px 128px;                             /* 박스 크기에 맞춰서 배경 크기도 맞춤 */ 
+                                                                /* 너비만 맞추는 경우 높이는 auto값을 자동으로 사용함 */
+    }
+  </style>
+  <div class="box1"></div>
+
+  <hr>
+
+  <style>
+    /* background 이미지 반복 */
+    .box2 {
+      box-sizing: border-box;
+      width: 500px;
+      height: 380px;
+      border: 1px solid gray;
+      background-image: url(../../assets/image/attach1.png);
+      background-repeat: no-repeat; /* repeat:반복 no-repeat:반복없음 */
+      background-size: auto;        /* 이미지 크기를 그대로 사용 */
+      background-position: right;   /* top/bottom(세로 정렬), left/center/right(가로 정렬) */
+      /* position:위치 조정(자동 가운데 정렬이 됨) */ /* middle(여기엔 없지만, 세로 정렬) */
+    }
+  </style>
+  <div class="box2"></div>
+
+  <hr>
+
+  <style>
+    /* box보다 큰 이미지 처리 */
+    .box3 {
+      box-sizing: border-box;
+      width: 300px;
+      height: 300px;
+      border: 1px solid gray;
+      background-image: url(../../assets/image/animal10.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;  /* contain : 이미지를 늘리거나 자르지 않고(원래 비율 유지) 최대한 크게 조정해서 표현 */
+                               /* cover   : 너비/높이 중 작은 부분을 최대한 여백 없이 표시하고 box 밖으로 나간 부분은 자름 */
+                               /* 일반적으로 너비가 넓은 이미지 적용에는 cover를 사용하고, contain은 경우에 따라서 적용 */
+      background-position: center;
+    }
+  </style>
+  <div class="box3"></div>
+  
+</body>
+</html>
