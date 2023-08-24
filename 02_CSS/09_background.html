@@ -8,7 +8,7 @@
 <body>
 
   <style>
-    /* background : 그림 자체를 넣는 방법 (이미지를 넣을 때 흔히 사용한다.) */
+    /* background : 그림 자체를 넣는 방법 (이미지를 넣는 용도로 주로 사용한다.) */
 
     /* box 크기와 배경 이미지 크기를 동일하게 맞춤 */
     .box1 {
@@ -58,6 +58,32 @@
     }
   </style>
   <div class="box3"></div>
+
+  <hr>
+
+  <style>
+    /* 이미지의 일부만 표시하기 */
+    .box4 {
+      box-sizing: border-box;
+      width: 115px;
+      height: 115px;
+      background-image: url(../../assets/image/weather.png);
+      background-position: -145px -145px;  /* 가로 세로 순으로 이동, -145px: 배경이 왼쪽/아래쪽으로 145px 이동 */
+    }
+  </style>
+  <div class="box4"></div>
+
+  <!-- 연습 : 자바 로고 화면에 띄워보기 -->
+  <style>
+    .box5 {
+      box-sizing: border-box;
+      width: 110px;
+      height: 220px;
+      background-image: url(../../assets/image/logo.png);
+      background-position: -1170px -175px;
+    }
+  </style>
+  <div class="box5"></div>
   
 </body>
 </html>
