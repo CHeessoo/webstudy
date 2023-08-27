@@ -20,8 +20,6 @@
               <li>골키퍼</li>
             </ul>
           </li>
-        </ul>
-        <ul type="circle">
           <li>
             야구
             <ul type="square">
@@ -34,29 +32,31 @@
       </li>
     </ul>
   </div>
- 
-  <hr>
-
-  <dl>
-    <dt>준비물</dt>
-    <dd>
-      <ul>
-        <li type="square">김치</li>
-        <li type="square">참치</li>
-      </ul>
-    </dd>
-    <dt>조리법</dt>
-    <dd>
-      <ol>
-        <li>물을 500cc 넣고 끓인다.</li>
-        <li>김치를 넣는다.</li>
-        <li>참치를 넣는다.</li>
-      </ol>
-    </dd>
-  </dl>
 
   <hr>
-  
+
+  <div>
+    <dl>
+      <dt>준비물</dt>
+      <dd>
+        <ul type="square">
+          <li>김치</li>
+          <li>참치</li>
+        </ul>
+      </dd>
+      <dt>조리법</dt>
+      <dd>
+        <ol type="1">
+          <li>물을 500cc 넣고 끓인다.</li>
+          <li>김치를 넣는다.</li>
+          <li>참치를 넣는다.</li>
+        </ol>
+      </dd>
+    </dl>
+  </div>
+
+  <hr>
+
   <div>
     <ul type="disc">
       <li>
@@ -90,8 +90,8 @@
         </tr>
         <tr>
           <td>6</td>
-          <td>8</td>
           <td>7</td>
+          <td>8</td>
           <td>9</td>
         </tr>
         <tr>
@@ -119,11 +119,12 @@
   <hr>
 
   <h2>연습2</h2>
+
   <div>
     <table border="1">
       <tbody>
         <tr>
-          <td colspan="5">1</td>
+          <td colspan="4">1</td>
           <td rowspan="7">2</td>
         </tr>
         <tr>
@@ -157,23 +158,25 @@
   
   <div>
     <table border="1">
-      <tbody>
-        <tr style="text-align: center;">
-          <td><strong>이름</strong></td>
-          <td><strong>나이</strong></td>
-          <td><strong>주소</strong></td>
+      <thead>
+        <tr>
+          <th>이름</th>  <!-- th 태그는 td 태그의 일종으로 [굵게 + 가운데 정렬]이 자동으로 적용된다. -->
+          <th>나이</th>
+          <th>주소</th>
         </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>홍길동</td>
           <td>20세</td>
           <td>서울시 마포구 노고산동</td>
         </tr>
         <tr>
-          <td style="text-align: center;"><strong>특기</strong></td>
+          <th>특기</th>
           <td colspan="2">먹기</td>
         </tr>
         <tr>
-          <td rowspan="2" style="text-align: center;"><strong>신체</strong></td>
+          <th rowspan="2">신체</th>
           <td colspan="2">180.0cm</td>
         </tr>
         <tr>
@@ -188,18 +191,20 @@
   <h2>연습4</h2>
 
   <div>
-    <table border="1" >
-      우리펜션 객실안내
-      <tbody>
-        <tr style="text-align: center;">
-          <td><strong>방이름</strong></td>
-          <td><strong>고객구분</strong></td>
-          <td><strong>정원</strong></td>
-          <td><strong>가격</strong></td>
+    <table border="1">
+      <caption>우리펜션 객실안내</caption>  <!-- caption 태그는 테이블의 제목을 만든다. -->
+      <thead>
+        <tr>
+          <th>방이름</th>
+          <th>고객구분</th>
+          <th>정원</th>
+          <th>가격</th>
         </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>콜로라도</td>
-          <td>여성전용</td>
+          <td>여성 전용</td>
           <td rowspan="3">4인실</td>
           <td rowspan="4">100,000원</td>
         </tr>
@@ -215,10 +220,12 @@
           <td>커플 전용</td>
           <td>2인실</td>
         </tr>
-        <tr>
-          <td colspan="4" style="text-align: center;"><strong>6월 15일까지 전 객실 50% 할인</strong></td>
-        </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">6월 15일까지 전 객실 50% 할인</th>
+        </tr>
+      </tfoot>
     </table>
   </div>
 
@@ -229,7 +236,7 @@
   <div>
     <form method="post">
       <input type="text" placeholder="example@naver.com" name="id">  <!-- type="text"는 생략 가능 하지만 권장X-->
-      <input type="password" placeholder="비밀번호" name="pw">
+      <input type="password" placeholder="비밀번호" name="pwd">
       <button>로그인</button>  <!-- button의 타입인 type="submit"은 디폴트값이기 때문에 생략 가능-->
     </form>
   </div>
@@ -261,7 +268,7 @@
   <div>
     <form method="post">
       <table>
-        <caption><strong>개인 정보 작성</strong></caption>
+        <caption><strong>개인 정보 작성</strong></caption> <!-- caption으로 테이블 제목 만들기 -->
         <tbody>
           <tr>
             <td><label for="name">이름</label></td>
@@ -385,8 +392,5 @@
     </form>
   </div>
 
-
-
-  
 </body>
 </html>
