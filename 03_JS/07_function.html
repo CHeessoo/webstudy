@@ -44,7 +44,7 @@
             함수 본문
             return 반환값;
           }
-        2) 화살표 익명 함수 (최근 표준 권장)
+        2) 화살표 익명 함수 (ES6, 최근 표준 권장)
           ([매개변수])=>{
             함수 본문
             return 반환값;
@@ -98,6 +98,180 @@
     });
 
   </script>
+
+  <script>
+
+    /*
+      인수와 매개변수
+      1. 매개변수를 선언할 때는 선언 키워드(var, let, const)를 사용하지 않는다. (매개변수는 변수명만 작성한다.)
+      2. 디폴트 매개변수 처리가 가능하다.
+        1) 변수를 선언하고 어떤 값도 저장하지 않으면 undefined 값을 가진다.
+        2) 매개변수로 인수를 전달하지 않으면 매개변수는 undefined 값을 가진다.
+        3) 매개변수의 undefined 여부에 따라 매개변수의 초기화 작업을 진행할 수 있다.
+        4) 매개변수에 디폴트 값을 직접 저장할 수 있다.
+      3. 전개 연산자(...)가 존재한다.
+        1) 인수의 개수가 정해지지 않은 경우에 사용한다.
+        2) 매개변수를 배열로 처리한다.
+      4. 인수를 저장하는 arguments 객체가 있다.
+        1) 매개변수를 선언하지 않아도 모든 인수는 arguments 객체에 저장된다.
+        2) arguments 객체는 배열과 유사하게 동작한다.
+    */
+    
+
+    // 선언 함수 - 인수와 매개변수
+    function myFunc3(a){
+      console.log(a);
+    }
+    myFunc3(10);
+    myFunc3('Hello World');
+    var a = true;
+    myFunc3(a);
+
+    // 익명 함수 - 인수와 매개변수
+    
+    // 선언함수
+    // var myFunc4 = function(b){
+    //   console.log(b);
+    // }
+    // myFunc4(100);
+    // myFunc4('안녕하세요');
+    // var b = false;
+    // myFunc4(b);
+
+    // // 자기호출 익명함수
+    // (function(c){
+    //   console.log(c);
+    // })(1000);
+    
+    // 화살표 익명 함수
+    var myFunc4 = (b)=>{
+      console.log(b);
+    }
+    myFunc4(100);
+    myFunc4('안녕하세요');
+    var b = false;
+    myFunc4(b);
+
+    // 자기호출
+    ((c)=>{
+      console.log(c);
+    })(1000);
+
+    // 디폴트 매개변수
+    function myFunc5(a){
+      if(a === undefined){  // a로 전달된 인수가 없으면 a = 0 이다.
+        a = 0;
+      }
+      console.log(a);
+    }
+    myFunc5(10);  // 10
+    myFunc5();    // 0
+
+    // 디폴트 매개변수(ES6)
+    function myFunc6(a = 0){
+      console.log(a);
+    }
+    myFunc6(10);
+    myFunc6();
+
+    // 전개 연산자(...)
+    function myFunc7(...a){
+      for(let i = 0; i < a.length; i++){
+        console.log(a[i]);
+      }
+    }
+    myFunc7(1, 2, 3, 4, 5);
+
+    // arguments 객체
+    function myFunc8(){
+      for(let i = 0; i < arguments.length; i++){
+        console.log(arguments[i]);
+      }
+    }
+    myFunc8(6, 7, 8, 9, 10);
+
+    </script>
+
+    <script>
+
+      /*
+        반환(return)
+        1. 반환 타입을 작성하지 않는다.
+        2. return 반환값; 을 통해서 값을 반환할 수 있다.
+        3. return; 을 통해서 함수를 종료할 수 있다.
+      */
+
+      // 연습 예제
+     
+      // 파라미터 세개 중 최대값 반환
+      function myMax(a, b, c){
+         if(isNaN(a) || isNaN(b) || isNaN(c)){ // a,b,c중 하나라도 숫자가 아니면(Not a number)
+          return;   // 전달된 값이 숫자가 아닐 경우 아무값도 반환하지 않고 함수 종료(undefined)
+          }
+        let max = a;
+        if(b > max) max = b;
+        if(c > max) max = c;
+        return max;   // 종료하는 return;과 반환값을 가진 return max; 가 한 함수(메소드)안에 함께 존재할 수 있다.
+      }
+      // console.log(myMax('a', 'hello', true));   // 숫자 비교가 아닐 때(문자열)는 알파벳 순으로 비교
+  
+      // 파라미터 세개 중 최소값 반환 
+      function myMin(a, b, c){
+        if(isNaN(a) || isNaN(b) || isNaN(c)){
+          return;
+        }
+        let min = a;
+        if(b < min) min = b;
+        if(c < min) min = c;
+        return min;
+      }
+
+      // 파라미터 세개 중 제일 중간값 반환
+      function myMedian(a, b, c){
+        if(isNaN(a) || isNaN(b) || isNaN(c)){
+          return;
+        }
+        /*
+        if(a >= b){
+          if(b >= c) median = b;      // a b c
+          else if(a <= c) median = a; // c a b
+          else median = c;            // a c b
+        } 
+        else if(a > c) median = a;    // b a c
+        else if(b > c) median = c;    // b c a
+        else median = b;              // c b a
+        */
+        let median;
+        if((b >= a && a >= c) || (c >= a && a >= b)){ // b a c, c a b
+          median = a;
+        } else if ((a >= b && b >= c) || (c >= b && b >= a)){ // a b c, c b a
+          median = b;
+        } else {
+          median = c;
+        }
+        return median;
+      }
+      console.log(myMax(1, 2, 3));
+      console.log(myMin(1, 2, 3));
+      console.log(myMedian(1, 2, 3));
+
+    </script>
+
+    <script>
+
+      /*
+        콜백 함수
+        1. 함수에 함수를 전달할 수 있는 개념이다.
+        2. 인수(함수) -> 매개변수(함수를 저장한 변수) 흐름으로 동작한다.
+
+      */
+
+    </script>
+
+
+
+
+
   
 </body>
 </html>
