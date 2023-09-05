@@ -4,8 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <!-- 연습을 위해 2가지 방법으로 포함 한것임 -->
+  <script src="../../assets/js/lib/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
+
+  <div id="box" class="wrap"></div>
+  <script>
+
+    // 1. 태그로 인식하면 배열
+    var div = $('div');    // getElementsByTagName('div')
+    console.log(div);     
+
+    // 2. id로 인식하면 객체
+    var box = $('#box');   // getElementById('box')
+    console.log(box);
+
+    // 3. class로 인식하면 배열
+    var wrap = $('.wrap'); // getElementsByClassName('wrap')
+    console.log(wrap);
+
+  </script>
   
 </body>
 </html>
