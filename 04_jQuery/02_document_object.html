@@ -26,6 +26,72 @@
     console.log(wrap);
 
   </script>
+
+  <div class="ott_wrap">
+    <ul class="ott">
+      <li id="watcha">
+        <a href="#">왓챠</a>
+      </li>
+      <li id="coupangplay">
+        <a href="#">쿠팡플레이</a>
+      </li>
+      <li id="netflix">
+        <a href="#">넷플릭스</a>
+      </li>
+      <li id="disneyplus">
+        <a href="#">디즈니플러스</a>
+      </li>
+      <li id="wavve">
+        <a href="#">웨이브</a>
+      </li>
+    </ul>
+  </div>
+  <script>
+
+    // 1. 자식
+    var ott = $('.ott_wrap > .ott');        // 자식 선택자를 이용하는 방법
+    console.log(ott);
+    
+    var ott = $('.ott_wrap').find('.ott');  // jQuery의 find 메소드를 이용하는 방법
+    console.log(ott);
+    
+    var ott = $('.ott_wrap').children();    // .ott_wrap의 모든 자식을 지정하지 않고 가지고 오는 방법
+    console.log(ott);
+
+    // 2. 후손
+    var li = $('.ott_wrap li');                     // 후손 선택자
+    console.log(li);
+
+    var li = $('.ott_wrap').find('li');             // find 메소드
+    console.log(li);
+
+    var li = $('.ott_wrap').children().children();  // .ott_wrap의 자식의 자식
+    console.log(li);
+
+    // 3. 형제
+    var sibling = $('#netflix ~ li');            // 모든 형제 선택자 (#netflix 다음 모든 형제)
+    console.log(sibling);
+    
+    var sibling = $('#netflix').nextAll('li');   // nextAll 메소드 (#netflix 다음 모든 형제)
+    console.log(sibling);
+
+    var sibling = $('#netflix').siblings('li');  // siblings 메소드 (#netflix의 모든 형제)
+    console.log(sibling);
+
+    var sibling = $('#netflix').prevAll('li');   // prevAll 메소드 (#netflix 이전 모든 형제)
+    console.log(sibling);
+
+    // 4. 인접 형제
+    var sibling = $('#netflix + li');        // 인접 형제 선택자 (#netflix의 다음 형제 하나)
+    console.log(sibling);
+
+    var sibling = $('#netflix').next('li');  // next 메소드 (#netflix의 다음 형제 하나)
+    console.log(sibling);
+
+    var sibling = $('#netflix').prev('li');  // prev 메소드 (#netflix의 이전 형제 하나)
+    console.log(sibling);
+
+  </script>
   
 </body>
 </html>
