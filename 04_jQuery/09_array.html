@@ -8,7 +8,39 @@
 </head>
 <body>
 
-  
+  <div id="box1"></div>
+  <script>
+
+    // 배열 생성 및 초기화
+    var fourSeason = ['spring', 'summer', 'autumn', 'winter'];
+
+    // 배열 요소 순회 each() 메소드
+    $.each(fourSeason, function(i){        // 배열 인덱스
+      console.log(i, fourSeason[i]);
+    })
+    $.each(fourSeason, function(i, elem){  // i : 배열 인덱스, elem : 배열 요소
+      console.log(i, elem);
+    })
+
+    /*
+                  <ol>
+      1. spring     <li>spring</li>
+      2. summer     <li>summer</li>
+      3. autumn     <li>autumn</li>
+      4. winter     <li>winter</li>
+                  </ol>
+      순서있는 목록(<ol>태그 사용)을 만들어서 box에 넣기 
+    */
+
+    var ol = $('<ol>');
+    $.each(fourSeason, function(i, elem){
+      ol.append($('<li>').text(elem));
+    })
+    ol.appendTo($('#box1'));  // $('#box1').append(ol);
+
+    
+
+  </script>
   
 </body>
 </html>
