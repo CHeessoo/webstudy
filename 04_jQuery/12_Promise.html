@@ -93,9 +93,103 @@
   <hr>
 
 
+  <!-- Promise 예시. ajax이 ajax을 호출하는 동작 시나리오 -->
+  <script>
+
+    /*
+      동작 시나리오
+      1. ajax1 : 입력한 이메일이 사용 가능한 이메일인지 확인한다. (DB에 등록된 이메일인지 여부 확인)
+      2. ajax2 : 사용 가능한 이메일이라면 인증 메일을 보낸다.
+    */
+
+    function checkEmail(){
+      return new Promise(function(resolve, reject){
+        // 사용자의 이메일
+        var email = 'admin@web.com';
+        // 1. ajax1 : 입력한 이메일이 사용 가능한 이메일인지 확인한다. (DB에 등록된 이메일인지 여부 확인)
+        $.ajax({
+          type: 'get',
+          url: 'validEmail.json',  // {"validEmail": true} 또는 {"validEmail": false}
+          async: true,
+          data: 'email=' + email,   // 사용자의 이메일을 서버로 보냄
+          dataType: 'json',
+          success: function(resData){
+            if(resData.validEmail){
+              resolve(email);
+            } else {
+              reject(email);
+            }
+          }
+        })
+      })
+    }
+
+  checkEmail().then(function(email){
+    // 사용자가 입력한 인증코드
+    var authcode = '123456';
+    // 2. ajax2 : 사용 가능한 이메일이라면 인증 메일을 보낸다.
+    $.ajax({
+      type: 'get',
+      url: 'authentication.json',  // {"authcode": "123456"} (의미 : 사용자의 이메일로 보낸 인증코드)
+      async: true,
+      data: 'email' + email,
+      success: function(resData){
+        if(authcode === resData.authcode){
+          alert('인증되었습니다.');
+        } else {
+          alert('인증실패했습니다.');
+        }
+      }
+    })
+  }).catch(function(email){
+    alert(email + ' 이메일은 이미 등록 되었습니다.');
+  });
+
+  </script>
+
+
+
+  <hr>
+  
+  
+  <!-- Promise 예시. 이미지 표시하기 -->
   <div>
-    
+    <button id="btn">이미지열기</button>
+    <div id="img"></div>
   </div>
+  <script>
+    $('#btn').click(function () {
+      var no = parseInt(Math.random() * 10 + 1); // 1~10 사이의 랜덤 값 생성
+      openImage('../../assets/image/animal' + no + '.jpg');
+    })
+
+    function openImage(imageURL) {
+      new Promise(function (resolve, reject) {
+        // ajax을 이용해서 이미지를 blob(Binary Type, 이진타입) 타입으로 가져오기 (blob : 이미지에만 사용되는것은 아니고 주로 멀티미디어 데이터를 다룰 때 사용됨. 바이너리로 표현 가능한 많은 데이터 송수신에 모두 사용 가능한 방법이다.)
+        $.ajax({
+          type: 'get',
+          url: imageURL,
+          async: true,
+          xhrFields: {
+            responseType: 'blob'
+          },
+          success: function (resData) {  // resData에는 이미지의 이진 데이터가 전달됨 
+            resolve(resData);
+          },
+          error: function (jqXHR) {
+            reject(jqXHR);
+          }
+        })
+      }).then(function (resData) {
+        var img = new Image();  // <img> 태그를 만드는 JavaScript 객체
+        img.src = URL.createObjectURL(resData);  // 이미지의 이진 데이터를 <img> 태그로 만든 뒤 가상 주소를 src 속성에 넘긴다.
+        $('#img').empty();      // 태그 내부를 비우고 새로운 이미지 태그만 추가하도록 하는 방법 (이미지가 쌓이지 않음)
+        $('#img').append(img);
+      }).catch(function (jqXHR) {
+        alert(jqXHR.status + '(' + jqXHR.statusText + ')');
+      })
+    }
+  </script>
   
 </body>
 </html>
