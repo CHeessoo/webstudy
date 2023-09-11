@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <style>
+    .warning {
+      color: crimson;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <form id="frm_login" method="post" action="/">
+      <div>
+        <input type="text" id="id" placeholder="ID">
+        <div id="msg_id"></div>
+      </div>
+      <div>
+        <input type="password" id="pw" placeholder="Password">
+        <div id="msg_pw"></div>
+      </div>
+      <div>
+        <button type="submit">로그인</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    // 키보드 동작 관련 이벤트
+    $('#id').keyup(function(){  
+      if(this.value.length < 4){
+        $('#msg_id').text('아이디는 4글자 이상입니다.').addClass('warning');
+      }
+    })
+
+    // keyup : 입력 완료 이후, 키보드를 누른 다음에 키가 올라올 때 한 글자씩 쓸 때마다 검사하는 이벤트 (백스페이스도 인식 가능)
+    // blur  : 포커스를 잃었을 때 동작하는 이벤트 (keyup과 함께 정규식에서 많이 쓰이는 이벤트)
+  </script>
+  
+</body>
+</html>
