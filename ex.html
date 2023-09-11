@@ -6,6 +6,9 @@
   <title>Document</title>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <style>
+    .good {
+      color: teal;
+    }
     .warning {
       color: crimson;
     }
@@ -29,13 +32,54 @@
     </form>
   </div>
   <script>
-    // 키보드 동작 관련 이벤트
+
+    // 아이디 입력에 따른 체크 여부 나타내기
     $('#id').keyup(function(){  
-      if(this.value.length < 4){
-        $('#msg_id').text('아이디는 4글자 이상입니다.').addClass('warning');
+      /*
+      if(this.value.length < 4){  // 글자수를 만족하지 않을 시 (정규식 검사는 안 한 상태)
+        $('#msg_id').text('아이디는 4글자 이상입니다.').addClass('warning'); // warning 클래스는 crimson 색상
+      } else {
+        $('#msg_id').text('').removeClass('warning');  // 글자수를 만족(4글자 이상)해서 warning 클래스가 지워지면 빨간 경고 글씨 사라짐
+      }
+      */
+      /*
+      var regId = /^[A-Za-z][A-Za-z0-9-_]{4,19}$/;
+      if(regId.test(this.value)){
+        $('#msg_id').text('good').addClass('good').removeClass('warning');
+      } else {
+        $('#msg_id').text('아이디는 5~20자...').addClass('warning').removeClass('good');
+      }
+    })
+    */
+
+    $('#pw').keyup(function(){  // 입력이 아예 안 된 상태에서는 적용 되지 않음.
+      if(this.value.length === 0){
+        $('#msg_pw').text('비밀번호를 입력하세요.').addClass('warning');
+      } else {
+        $('#msg_pw').text('').removeClass('warning');
       }
     })
 
+    $('#frm_login').submit(function(event){
+      /*
+      // 잘못된 형식의 아이디일 경우 로그인이 되지 않도록 막는 이벤트 (password도 가능)
+      if(!$('#msg_id').hasClass('good')){  // hasClass() : 어떤 클래스를 가지고 있는지 확인 가능
+        alert('아이디를 확인하세요.');
+        event.preventDefault();
+        return;
+      } 
+      */
+
+      if($('#msg_pw').hasClass('warning')){
+        alert('비밀번호를 입력하세요.');
+        event.preventDefault();
+        return;
+      }
+    })
+
+
+
+    // 키보드 동작 관련 이벤트
     // keyup : 입력 완료 이후, 키보드를 누른 다음에 키가 올라올 때 한 글자씩 쓸 때마다 검사하는 이벤트 (백스페이스도 인식 가능)
     // blur  : 포커스를 잃었을 때 동작하는 이벤트 (keyup과 함께 정규식에서 많이 쓰이는 이벤트)
   </script>
