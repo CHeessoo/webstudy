@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+.header {
+  height: 50px;
+}
+
+.header a {
+  margin: 10px;
+  color: Indigo;
+  background-color: Lavender;
+  text-decoration: none;
+}
+
+.home {
+  background-color: Ivory;
+}
+
+.ex01 {
+  background-color: Ivory;
+}
+
+.footer {
+  border-top: 1px solid gray;
+  background-color: LavenderBlush;
+  height: 100px;
+  padding-top: 42px;
+}
