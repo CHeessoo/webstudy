@@ -4,6 +4,8 @@ import Home from './component/Home';
 import Ex01 from './component/Ex01';
 import Header from './component/Header';
 import Footer from './component/Footer';
+import Ex03 from './component/Ex03';
+import PathVariable from './component/PathVariable';
 
 
 function App() {
@@ -17,11 +19,16 @@ function App() {
 
       {/* 경로에 따른 컴포넌트 실행(react-router-dom 설치 필요 : npm install react-router-dom) */}
       <BrowserRouter>
+
         <Header />
+
         <Routes>
           <Route path="/"     element={<Home/>} />
           <Route path="/ex01" element={<Ex01/>} />
+          <Route path="/ex03" element={<Ex03/>} />
+          <Route path="/pathvariable/name/:name/age/:age" element={<PathVariable/>} />
         </Routes>
+
       </BrowserRouter>
       
       <Footer />

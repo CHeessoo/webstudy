@@ -10,6 +10,7 @@ const Header = () => {
       */}
       <Link to="/">Home</Link>
       <Link to="/ex01">Ex01</Link>
+      <Link to="/ex03">Ex03</Link>
     </div>
   );
 };
