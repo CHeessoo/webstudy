@@ -17,6 +17,10 @@
   background-color: Ivory;
 }
 
+.path-variable, .query-string {
+  background-color: lavender;
+}
+
 
 .footer {
   border-top: 1px solid gray;
