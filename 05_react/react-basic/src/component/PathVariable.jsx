@@ -13,6 +13,7 @@ const PathVariable = () => {
       <h1>Path Variable</h1>
       <h4>이름 : {name}</h4>
       <h4>나이 : {age}</h4>
+      
     </div>
   );
 };

@@ -13,13 +13,10 @@
   text-decoration: none;
 }
 
-.home {
+.home, .ex01, .ex02, .ex03, .ex04, .ex05, .ex06 {
   background-color: Ivory;
 }
 
-.ex01 {
-  background-color: Ivory;
-}
 
 .footer {
   border-top: 1px solid gray;
